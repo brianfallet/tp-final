@@ -10,68 +10,84 @@ export const getProducts = async (req, res) => {
             result: products
         })
     } catch (error) {
-        res.status(500).json({ message: "Internal server error"})
+        res.status(500).json({ message: "Internal server error", error })
     }
 }
 
 export const getProductById = async (req, res) => {
-    const { id } = req.params
-    const product = await Products.findOne({
-        where: { id }
-    })
-    res.status(200).json({
-        ok: true,
-        status: 200,
-        result: product
-    })
+    try {
+        const { id } = req.params
+        const product = await Products.findOne({
+            where: { id }
+        })
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            result: product
+        })
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error })
+    }
 }
 
 export const createProduct = async (req, res) => {
-    const { name, commercialName, measureUnitId, salePrice, buyPrice, supplierId, imageUrl } = req.body
-    await Products.sync()
-    await Products.create({
-        name,
-        commercialName,
-        measureUnitId,
-        salePrice,
-        buyPrice,
-        supplierId,
-        imageUrl
-    })
-    res.status(201).json({
-        ok: true,
-        status: 201,
-        message: "Created product"
-    })
+    try {
+        const { name, commercialName, measureUnitId, salePrice, buyPrice, supplierId, imageUrl } = req.body
+        await Products.sync()
+        await Products.create({
+            name,
+            commercialName,
+            measureUnitId,
+            salePrice,
+            buyPrice,
+            supplierId,
+            imageUrl
+        })
+        res.status(201).json({
+            ok: true,
+            status: 201,
+            message: "Created product"
+        })
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error })
+    }
 }
 
 export const deleteProduct = async (req, res) => {
-    const { id } = req.params
-    await Products.sync()
-    await Products.destroy({ where: { id }})
-    res.status(200).json({
-        ok: true,
-        status: 200,
-        message: "Deleted product"
-    })
+    try {
+        const { id } = req.params
+        await Products.sync()
+        await Products.destroy({ where: { id }})
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            message: "Deleted product"
+        })
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error })
+    }
 }
 
 export const updateProduct = async (req, res) => {
-    const { id } = req.params
-    const { name, commercialName, measureUnitId, salePrice, buyPrice, supplierId, imageUrl } = req.body
-    await Products.sync()
-    await Products.update({
-        name,
-        commercialName,
-        measureUnitId,
-        salePrice,
-        buyPrice,
-        supplierId,
-        imageUrl
-    }, { where : { id }})
-    res.status(200).json({
-        ok: true,
-        status: 200,
-        message: "Updated product"
-    })
+    try {
+        const { id } = req.params
+        const { name, commercialName, measureUnitId, salePrice, buyPrice, supplierId, imageUrl } = req.body
+        await Products.sync()
+        await Products.update({
+            name,
+            commercialName,
+            measureUnitId,
+            salePrice,
+            buyPrice,
+            supplierId,
+            imageUrl
+        }, { where : { id }})
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            message: "Updated product"
+        })
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error })
+    }
 }
