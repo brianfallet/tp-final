@@ -4,7 +4,7 @@ import axios from "axios";
 import { ServicesRoutes } from "../../constants/ServicesRoutes";
 import { Loading } from "../../components/Loading";
 import { ProductItem } from "./components/ProductItem";
-import { Button, Paper, Stack, } from "@mui/material";
+import { Alert, Button, Paper, Stack } from "@mui/material";
 import { PageTemplate } from "../layout/PageTemplate";
 import { useNavigate } from "react-router-dom";
 import { PageRoutes } from "../../constants/PageRoutes";
@@ -40,6 +40,8 @@ export const ProductsPage = () => {
     }, [getAccessTokenSilently])
 
     if(isLoading) return <Loading />
+
+    if(!products) return <Alert severity="error">Ha ocurrido un error inesperado</Alert>
 
     return (
         <PageTemplate title="Productos">

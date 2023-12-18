@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, FormControl, InputAdornment, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material"
+import { Alert, Button, FormControl, InputAdornment, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material"
 import { useForm } from "react-hook-form"
 import PropTypes from 'prop-types';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -61,6 +61,8 @@ export const ProductForm = ({ id, name, commercialName, salePrice, buyPrice, sup
     const onFormSubmit = handleSubmit(onSubmit)
 
     if(isLoading) return <Loading />
+
+    if(!suppliers || !measureUnits) return <Alert severity="error">Ha ocurrido un error inesperado</Alert>
 
     return (
         <form onSubmit={onFormSubmit}>

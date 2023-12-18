@@ -6,6 +6,7 @@ import axios from "axios";
 import { Loading } from "../../components/Loading";
 import { ProductForm } from "./components/ProductForm";
 import { PageRoutes } from "../../constants/PageRoutes";
+import { Alert } from "@mui/material";
 
 export const ProductDetailPage = () => {
 
@@ -83,6 +84,8 @@ export const ProductDetailPage = () => {
     }, [fetchData])
 
     if(isLoading) return <Loading />
+
+    if(!product) return <Alert severity="error">Ha ocurrido un error inesperado</Alert>
     
     return (
         <ProductForm 
