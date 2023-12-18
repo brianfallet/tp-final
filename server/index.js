@@ -1,5 +1,5 @@
-import app from './app.js'
 import './database/connection.js'
+import app from './app.js'
 
 app.listen(app.get('port'))
 

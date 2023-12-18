@@ -1,13 +1,17 @@
 import Products from '../model/product.model.js'
 
 export const getProducts = async (req, res) => {
-    await Products.sync()
-    const products = await Products.findAll()
-    res.status(200).json({
-        ok: true,
-        status: 200,
-        result: products
-    })
+    try {
+        await Products.sync()
+        const products = await Products.findAll()
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            result: products
+        })
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error"})
+    }
 }
 
 export const getProductById = async (req, res) => {

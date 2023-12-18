@@ -8,7 +8,6 @@ import productsRoutes from './routes/products.routes.js'
 import measureUnitsRoutes from './routes/measureUnits.routes.js'
 import suppliersRoutes from './routes/suppliers.routes.js'
 
-
 const app = express()
 
 const jwtCheck = auth({
@@ -25,15 +24,6 @@ app.use(express.json());
 app.use(jwtCheck);
 
 app.use(morgan("dev"))
-
-app.use(async (req, res) => {
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-})
 
 app.use('/api/products', productsRoutes)
 app.use("/api/measureUnits", measureUnitsRoutes)

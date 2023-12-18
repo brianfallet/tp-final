@@ -1,4 +1,4 @@
-import { sequelize } from "../database/connection.js";
+import sequelize from "../database/connection.js";
 import { Model, DataTypes } from "sequelize";
 
 class MeasureUnit extends Model {}
