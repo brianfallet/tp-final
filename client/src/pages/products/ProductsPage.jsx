@@ -8,6 +8,7 @@ import { Alert, Button, Paper, Stack } from "@mui/material";
 import { PageTemplate } from "../layout/PageTemplate";
 import { useNavigate } from "react-router-dom";
 import { PageRoutes } from "../../constants/PageRoutes";
+import { NoContent } from "../../components/NoContent";
 
 export const ProductsPage = () => {
     const navigate = useNavigate()
@@ -41,7 +42,7 @@ export const ProductsPage = () => {
 
     if(isLoading) return <Loading />
 
-    if(!products) return <Alert severity="error">Ha ocurrido un error inesperado</Alert>
+    if(products === null) return <Alert severity="error">Ha ocurrido un error inesperado</Alert>
 
     return (
         <PageTemplate title="Productos">
@@ -50,17 +51,22 @@ export const ProductsPage = () => {
                     Crear nuevo
                 </Button>
             </Paper>
-            <Stack spacing={2}>
-                {products.map((product) => (
-                    <ProductItem 
-                        key={product.id}
-                        id={product.id}
-                        name={product.name}
-                        salePrice={product.salePrice}
-                        imageUrl={product.imageUrl}
+            {
+                !products?.length ? <NoContent/>
+                :  
+                <Stack spacing={2}>
+                    {products.map((product) => (
+                        <ProductItem 
+                            key={product.id}
+                            id={product.id}
+                            name={product.name}
+                            salePrice={product.salePrice}
+                            imageUrl={product.imageUrl}
                     />
                 ))}
-            </Stack>
+                    </Stack>
+            }
+           
         </PageTemplate>
     )
 }
