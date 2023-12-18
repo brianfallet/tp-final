@@ -2,8 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { Auth0Provider } from '@auth0/auth0-react'
-import { AuthInject } from './security/AuthInject.jsx'
-
 
 const domain = import.meta.env.VITE_AUTH0_DOMAIN
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
@@ -21,7 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         useRefreshTokens
         cacheLocation="localstorage"
     >
-        <AuthInject />
         <App />
     </Auth0Provider>
   </React.StrictMode>,
