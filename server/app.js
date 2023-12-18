@@ -22,7 +22,7 @@ const jwtCheck = auth({
 app.use(cors())
 app.set('port', config.port || 3000)
 app.use(express.json());
-//app.use(jwtCheck);
+app.use(jwtCheck);
 
 app.use(morgan("dev"))
 
