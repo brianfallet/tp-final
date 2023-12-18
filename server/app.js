@@ -26,6 +26,15 @@ app.use(jwtCheck);
 
 app.use(morgan("dev"))
 
+app.use(async (req, res) => {
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+})
+
 app.use('/api/products', productsRoutes)
 app.use("/api/measureUnits", measureUnitsRoutes)
 app.use('/api/suppliers', suppliersRoutes)
