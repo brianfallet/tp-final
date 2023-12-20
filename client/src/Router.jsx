@@ -10,6 +10,15 @@ import { ProductDetailPage } from './pages/products/ProductDetailPage.jsx'
 import { BaseLayout } from './pages/layout/BaseLayout.jsx'
 import { LoginPageLayout } from './pages/login/LoginPageLayout.jsx'
 import { ProductNewPage } from './pages/products/ProductNew.jsx'
+import { SuppliersPage } from './pages/suppliers/SuppliersPage.jsx'
+import { SupplierDetailPage } from './pages/suppliers/SupplierDetailPage.jsx'
+import { SupplierNewPage } from './pages/suppliers/SupplierNew.jsx'
+import { ClientsPage } from './pages/clients/ClientsPage.jsx'
+import { ClientDetailPage } from './pages/clients/ClientDetailPage.jsx'
+import { ClientNewPage } from './pages/clients/ClientNew.jsx'
+import { MeasureUnitsPage } from './pages/measureUnits/MeasureUnitsPage.jsx'
+import { MeasureUnitDetailPage } from './pages/measureUnits/MeasureUnitDetailPage.jsx'
+import { MeasureUnitNewPage } from './pages/measureUnits/MeasureUnitNew.jsx'
 
 const router = createBrowserRouter([
     {
@@ -60,6 +69,51 @@ const router = createBrowserRouter([
                         path: PageRoutes.productNew,
                         Component: ProductNewPage,
                         ErrorBoundary: ErrorPage,
+                    },
+                    {
+                        path: PageRoutes.suppliers,
+                        Component: SuppliersPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                    {
+                        path: PageRoutes.supplierDetail,
+                        Component: SupplierDetailPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                    {
+                        path: PageRoutes.supplierNew,
+                        Component: SupplierNewPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                    {
+                        path: PageRoutes.clients,
+                        Component: ClientsPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                    {
+                        path: PageRoutes.clientDetail,
+                        Component: ClientDetailPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                    {
+                        path: PageRoutes.clientNew,
+                        Component: ClientNewPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                     {
+                        path: PageRoutes.measureUnits,
+                        Component: MeasureUnitsPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                    {
+                        path: PageRoutes.measureUnitDetail,
+                        Component: MeasureUnitDetailPage,
+                        ErrorBoundary: ErrorPage
+                    },
+                    {
+                        path: PageRoutes.measureUnitNew,
+                        Component: MeasureUnitNewPage,
+                        ErrorBoundary: ErrorPage
                     }
                 ]
             }

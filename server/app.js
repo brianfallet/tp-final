@@ -7,6 +7,7 @@ import { auth } from 'express-oauth2-jwt-bearer'
 import productsRoutes from './routes/products.routes.js'
 import measureUnitsRoutes from './routes/measureUnits.routes.js'
 import suppliersRoutes from './routes/suppliers.routes.js'
+import clientsRoutes from './routes/clients.routes.js'
 
 const app = express()
 
@@ -21,12 +22,13 @@ const jwtCheck = auth({
 app.use(cors())
 app.set('port', config.port || 3000)
 app.use(express.json());
-app.use(jwtCheck);
+//app.use(jwtCheck);
 
 app.use(morgan("dev"))
 
 app.use('/api/products', productsRoutes)
 app.use("/api/measureUnits", measureUnitsRoutes)
 app.use('/api/suppliers', suppliersRoutes)
+app.use('/api/clients', clientsRoutes)
 
 export default app
